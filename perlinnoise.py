@@ -4,7 +4,7 @@ import numpy as np
 def Interpolate(x,y,blend):
     return x * (1 - blend) + blend * y
 
-#Génére un tableau de nombre aléatoire entre 0 et 1
+#Génére un tableau de nombre aléatoire entre 0.0 et 1.0
 def makeNoise(w,h):
     return np.random.rand(w, h)
 
@@ -38,7 +38,7 @@ def makeSmoothNoise(baseNoise,octave):
             # idem que pour top, mais avec les points (sample_i0,sample_j1) et (sample_i1,sample_j1).
             bottom = Interpolate(baseNoise[sample_i0][sample_j1],baseNoise[sample_i1][sample_j1], horizontal_blend)
 
-            # On calcul la moyenne pondérée (on interpole) des valeurs calculées avant en pondérant pas la distance vertical de (i,j) par rapport aux sommets du rectangle
+            # On calcul la moyenne pondérée (on interpole) des valeurs calculées avant en pondérant par la distance vertical de (i,j) par rapport aux sommets du rectangle
             noise[i][j] = Interpolate(top, bottom, vertical_blend);
 
     return noise
