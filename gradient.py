@@ -15,7 +15,7 @@ def colorGradient(x):
     r=(t >> 16) & 0xFF
     g = (t >> 8) & 0xFF
     b = t & 0xFF
-    return [r,g,b]
+    return [r/256.,g/256.,b/256.]
 
 
 def blackAndWhiteGradient(x):

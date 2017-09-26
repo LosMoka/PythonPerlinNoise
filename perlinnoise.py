@@ -14,13 +14,13 @@ def makeSmoothNoise(baseNoise,octave):
     noise = np.zeros_like(baseNoise)                                # 1)Créer un tableau vide à la bonne taille
     w,h = np.shape(baseNoise)
 
-    samplePeriod = pow(2, octave)                                   # 2)Période d'échantiollnage : correspond à de combien l'image sera zommé, on prend un point tous les samplePeriod
+    samplePeriod = pow(2, octave)                                   # 2)Période d'échantillonnage : correspond à de combien l'image sera zommé, on prend un point tous les 2^(niveau de zoom)
     sampleFrequency = 1.0 / samplePeriod
 
     for i in range(w):                                              # 3)On définie un rectangle (sample_i0,sample_j0),(sample_i1,sample_j0),(sample_i1,sample_j1),(sample_i0,sample_j1)
                                                                     # Ce rectangle désigne l'ensemble des points qui vont être regroupé en un seul pixel lors du zoom
                                                                     # Cependant comme la version zoomé doit être de la même taille que l'image de base, on va, pour chaque point de ce rectangle,
-                                                                    # calculer sa valeur en fonction de sa distance par rapport aux quatre sommet du rectangle
+                                                                    # calculer sa valeur en fonction de sa distance par rapport aux quatre sommetsbash du rectangle
 
         sample_i0 = (i // samplePeriod) * samplePeriod              # On prend un point tous les samplePeriod
         sample_i1 = (sample_i0 + samplePeriod) % w                  # Prochain point, pour former le rectangle à transformer
